@@ -1,0 +1,181 @@
+{
+  "title": "Fulton County Mobile Health Clinic 4-Saturday Equity Deployment Plan",
+  "target_county": "Fulton County, Georgia",
+  "van_profile": "1 Van, 1 Nurse Practitioner, Blood Pressure Cuff, Glucometer, ~40 Patients/Day",
+  "section_1_planner": {
+    "schedule": [
+      {
+        "saturday_index": 1,
+        "tract_id": "CT_13121010115",
+        "neighborhood_name": "Buckhead Forest",
+        "intersection": "Peachtree Rd NE & Piedmont Rd NE",
+        "operational_rationale": "Selected for Week 1 based on 40 contiguous spots on paved lot. High pedestrian visibility at Peachtree Rd NE & Piedmont Rd NE with safe turning radius and no permit required.",
+        "estimated_patient_capacity": 40
+      },
+      {
+        "saturday_index": 2,
+        "tract_id": "CT_13121010300",
+        "neighborhood_name": "South Fulton / Old National",
+        "intersection": "Old National Hwy & Flat Shoals Rd",
+        "operational_rationale": "Selected for Week 2 based on 22 contiguous spots on paved lot. High pedestrian visibility at Old National Hwy & Flat Shoals Rd with safe turning radius and no permit required.",
+        "estimated_patient_capacity": 40
+      },
+      {
+        "saturday_index": 3,
+        "tract_id": "CT_13121007805",
+        "neighborhood_name": "Adamsville / MLK Jr Dr",
+        "intersection": "Martin Luther King Jr Dr SW & Delmar Ln NW",
+        "operational_rationale": "Selected for Week 3 based on 16 contiguous spots on paved lot. High pedestrian visibility at Martin Luther King Jr Dr SW & Delmar Ln NW with safe turning radius and no permit required.",
+        "estimated_patient_capacity": 40
+      },
+      {
+        "saturday_index": 4,
+        "tract_id": "CT_13121005501",
+        "neighborhood_name": "Pittsburgh / Mechanicsville",
+        "intersection": "McDaniel St SW & University Ave SW",
+        "operational_rationale": "Selected for Week 4 based on 10 contiguous spots on paved lot. High pedestrian visibility at McDaniel St SW & University Ave SW with safe turning radius and no permit required.",
+        "estimated_patient_capacity": 40
+      }
+    ],
+    "overall_logistics_summary": "Selected 4 sites balancing vehicle turning radius (25 ft), paved lot staging, and pedestrian foot traffic across diverse Fulton County sectors. Each site accommodates a 24-ft mobile clinic van, patient intake canopy, and safe triage zone."
+  },
+  "section_2_auditor": {
+    "location_audits": [
+      {
+        "saturday_index": 1,
+        "tract_id": "CT_13121010115",
+        "neighborhood_name": "Buckhead Forest",
+        "uninsured_rate_pct": 4.1,
+        "safety_net_clinic_distance_miles": 7.1,
+        "transit_travel_time_min": 15.0,
+        "bus_transfers_required": 0,
+        "safety_net_desert": false,
+        "convenience_trap_flag": true,
+        "equity_need_tier": "Low Need (Mismatched)",
+        "audit_findings": "CONVENIENCE MISMATCH: Uninsured rate is only 4.1% and private care is 0.2 miles away. Selected primarily for ample parking capacity rather than clinical necessity."
+      },
+      {
+        "saturday_index": 2,
+        "tract_id": "CT_13121010300",
+        "neighborhood_name": "South Fulton / Old National",
+        "uninsured_rate_pct": 24.8,
+        "safety_net_clinic_distance_miles": 11.2,
+        "transit_travel_time_min": 68.0,
+        "bus_transfers_required": 3,
+        "safety_net_desert": true,
+        "convenience_trap_flag": false,
+        "equity_need_tier": "Critical Need",
+        "audit_findings": "Strong equity target. Tract has 24.8% uninsured rate and residents face 68-minute transit travel time with 3 bus transfers to reach safety-net care."
+      },
+      {
+        "saturday_index": 3,
+        "tract_id": "CT_13121007805",
+        "neighborhood_name": "Adamsville / MLK Jr Dr",
+        "uninsured_rate_pct": 22.5,
+        "safety_net_clinic_distance_miles": 7.6,
+        "transit_travel_time_min": 58.0,
+        "bus_transfers_required": 2,
+        "safety_net_desert": true,
+        "convenience_trap_flag": false,
+        "equity_need_tier": "Critical Need",
+        "audit_findings": "Strong equity target. Tract has 22.5% uninsured rate and residents face 58-minute transit travel time with 2 bus transfers to reach safety-net care."
+      },
+      {
+        "saturday_index": 4,
+        "tract_id": "CT_13121005501",
+        "neighborhood_name": "Pittsburgh / Mechanicsville",
+        "uninsured_rate_pct": 25.2,
+        "safety_net_clinic_distance_miles": 2.4,
+        "transit_travel_time_min": 35.0,
+        "bus_transfers_required": 1,
+        "safety_net_desert": false,
+        "convenience_trap_flag": false,
+        "equity_need_tier": "Critical Need",
+        "audit_findings": "Strong equity target. Tract has 25.2% uninsured rate and residents face 35-minute transit travel time with 1 bus transfers to reach safety-net care."
+      }
+    ],
+    "overall_equity_score": 49.0,
+    "portfolio_uninsured_reach_pct": 19.1,
+    "convenience_vs_need_verdict": "CONVENIENCE BIAS DETECTED: 1 of 4 sited locations exhibit low healthcare barriers. The Planner favored spacious parking aprons over documented healthcare deserts.",
+    "recommended_adjustments": [
+      "Bankhead / West Lake (28.4% uninsured, 52m transit)",
+      "Vine City / English Avenue (26.1% uninsured, 38m transit)"
+    ]
+  },
+  "section_3_communicator": {
+    "reading_level_target": "6th Grade (Flesch-Kincaid)",
+    "flyers": [
+      {
+        "saturday_index": 1,
+        "saturday_date_label": "Saturday Week 1 • 9:00 AM – 3:00 PM",
+        "neighborhood": "Buckhead Forest",
+        "exact_stop_location": "Mobile Health Van at Peachtree Rd NE & Piedmont Rd NE",
+        "how_to_get_there": "Look for the white health van parked at Peachtree Rd NE & Piedmont Rd NE. Accessible by local MARTA bus lines. No stairs needed to enter.",
+        "services_offered": [
+          "Blood pressure check (test for high blood pressure)",
+          "Fingerstick blood sugar check (test for diabetes)",
+          "Talk with a licensed Nurse Practitioner about how you feel",
+          "Help connecting to local community clinics if you need ongoing care"
+        ],
+        "cost_and_insurance_notice": "100% Free. No health insurance needed. No government ID required.",
+        "what_to_bring": "Bring a list of your current medications or empty medicine bottles if you have them. Wear comfortable clothes. Family and walk-ins welcome!",
+        "service_limits_notice": "Please note: The mobile van is for preventive checkups and health screenings. We do not treat emergency injuries, perform surgeries, or have hospital beds. For emergencies, call 911 or visit Grady Memorial Hospital."
+      },
+      {
+        "saturday_index": 2,
+        "saturday_date_label": "Saturday Week 2 • 9:00 AM – 3:00 PM",
+        "neighborhood": "South Fulton / Old National",
+        "exact_stop_location": "Mobile Health Van at Old National Hwy & Flat Shoals Rd",
+        "how_to_get_there": "Look for the white health van parked at Old National Hwy & Flat Shoals Rd. Accessible by local MARTA bus lines. No stairs needed to enter.",
+        "services_offered": [
+          "Blood pressure check (test for high blood pressure)",
+          "Fingerstick blood sugar check (test for diabetes)",
+          "Talk with a licensed Nurse Practitioner about how you feel",
+          "Help connecting to local community clinics if you need ongoing care"
+        ],
+        "cost_and_insurance_notice": "100% Free. No health insurance needed. No government ID required.",
+        "what_to_bring": "Bring a list of your current medications or empty medicine bottles if you have them. Wear comfortable clothes. Family and walk-ins welcome!",
+        "service_limits_notice": "Please note: The mobile van is for preventive checkups and health screenings. We do not treat emergency injuries, perform surgeries, or have hospital beds. For emergencies, call 911 or visit Grady Memorial Hospital."
+      },
+      {
+        "saturday_index": 3,
+        "saturday_date_label": "Saturday Week 3 • 9:00 AM – 3:00 PM",
+        "neighborhood": "Adamsville / MLK Jr Dr",
+        "exact_stop_location": "Mobile Health Van at Martin Luther King Jr Dr SW & Delmar Ln NW",
+        "how_to_get_there": "Look for the white health van parked at Martin Luther King Jr Dr SW & Delmar Ln NW. Accessible by local MARTA bus lines. No stairs needed to enter.",
+        "services_offered": [
+          "Blood pressure check (test for high blood pressure)",
+          "Fingerstick blood sugar check (test for diabetes)",
+          "Talk with a licensed Nurse Practitioner about how you feel",
+          "Help connecting to local community clinics if you need ongoing care"
+        ],
+        "cost_and_insurance_notice": "100% Free. No health insurance needed. No government ID required.",
+        "what_to_bring": "Bring a list of your current medications or empty medicine bottles if you have them. Wear comfortable clothes. Family and walk-ins welcome!",
+        "service_limits_notice": "Please note: The mobile van is for preventive checkups and health screenings. We do not treat emergency injuries, perform surgeries, or have hospital beds. For emergencies, call 911 or visit Grady Memorial Hospital."
+      },
+      {
+        "saturday_index": 4,
+        "saturday_date_label": "Saturday Week 4 • 9:00 AM – 3:00 PM",
+        "neighborhood": "Pittsburgh / Mechanicsville",
+        "exact_stop_location": "Mobile Health Van at McDaniel St SW & University Ave SW",
+        "how_to_get_there": "Look for the white health van parked at McDaniel St SW & University Ave SW. Accessible by local MARTA bus lines. No stairs needed to enter.",
+        "services_offered": [
+          "Blood pressure check (test for high blood pressure)",
+          "Fingerstick blood sugar check (test for diabetes)",
+          "Talk with a licensed Nurse Practitioner about how you feel",
+          "Help connecting to local community clinics if you need ongoing care"
+        ],
+        "cost_and_insurance_notice": "100% Free. No health insurance needed. No government ID required.",
+        "what_to_bring": "Bring a list of your current medications or empty medicine bottles if you have them. Wear comfortable clothes. Family and walk-ins welcome!",
+        "service_limits_notice": "Please note: The mobile van is for preventive checkups and health screenings. We do not treat emergency injuries, perform surgeries, or have hospital beds. For emergencies, call 911 or visit Grady Memorial Hospital."
+      }
+    ],
+    "general_community_announcement": "FREE COMMUNITY HEALTH CHECKUPS IN FULTON COUNTY THIS MONTH!\n\nA mobile health clinic van is coming to your neighborhood on Saturdays from 9 AM to 3 PM. A friendly Nurse Practitioner will check your blood pressure and blood sugar, answer your health questions, and give you healthy tips. Everything is completely FREE. You do not need health insurance, money, or an ID card. Walk-ups are welcome—first come, first served for up to 40 neighbors each Saturday. See our schedule below!"
+  },
+  "section_4_limitations": {
+    "ecological_fallacy_risk": "Census tracts in Fulton County average 4,000 residents across diverse micro-environments. Attributing tract-level uninsured rates (e.g. 28.4%) to every household within the boundary commits an ecological fallacy. Pockets of severe uninsurance can exist in moderate-income tracts, and well-insured clusters can exist in high-vulnerability tracts.",
+    "spatial_resolution_gap": "Geographic coordinates with 4 decimal places provide theoretical precision of approximately 11.1 meters (~36 feet). However, numerical GPS coordinates do not encode ground-truth curb realities: curb cut heights, active loading zone tow ordinances, low-hanging utility wires, generator noise ordinances, or private property towing enforcement. Ground-truthed physical scouting is essential.",
+    "transit_schedule_discrepancy": "Published General Transit Feed Specification (GTFS) travel times assume on-time bus schedules. In practice, Saturday MARTA headways frequently experience 30-to-60 minute intervals, missed connections, and service cuts. Transit times reported here (e.g. 52-68 minutes) represent optimistic lower bounds; actual patient transit burden is frequently 1.5x to 2x greater.",
+    "uninsured_rate_recency": "American Community Survey (ACS) 5-year rolling estimates lag real-time policy shocks. Specifically, Georgia's ongoing Medicaid redetermination ('unwinding') and shifts in low-income safety net qualification mean current uninsured numbers may exceed survey baselines by 15-25% in high-churn working class tracts."
+  }
+}
