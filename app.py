@@ -118,6 +118,7 @@ def get_active_schedule():
     orchestrator = ClinicPlanOrchestrator()
     plan = orchestrator.run()
 
+    candidates_map = get_full_candidates_lookup()
     schedule_data = []
     for s in plan.section_1_planner.schedule:
         audit = next(
@@ -128,12 +129,17 @@ def get_active_schedule():
             (f for f in plan.section_3_communicator.flyers if f.saturday_index == s.saturday_index),
             None
         )
+        cand = candidates_map.get(s.tract_id)
+        lat = cand.operational.latitude if cand else 33.7490
+        lon = cand.operational.longitude if cand else -84.3880
 
         schedule_data.append({
             "saturday_index": s.saturday_index,
             "tract_id": s.tract_id,
             "neighborhood_name": s.neighborhood_name,
             "intersection": s.intersection,
+            "latitude": lat,
+            "longitude": lon,
             "operational_rationale": s.operational_rationale,
             "estimated_patients": s.estimated_patient_capacity,
             "audit": {
@@ -158,6 +164,56 @@ def get_active_schedule():
             }
         })
 
+    map_data = {
+        "center": [33.7490, -84.4250],
+        "zoom": 11,
+        "approved_stops": schedule_data,
+        "vetoed_sites": [
+            {
+                "neighborhood_name": "Buckhead Forest",
+                "intersection": "Peachtree Rd NE & Piedmont Rd NE",
+                "latitude": 33.8431,
+                "longitude": -84.3685,
+                "parking_capacity_spots": 40,
+                "uninsured_rate_pct": 4.1,
+                "transit_travel_time_min": 15.0,
+                "distance_to_general_care": "0.2 miles",
+                "status": "VETOED BY AUDITOR AGENT (Convenience Trap)",
+                "reason": "Agent 1 (Planner) proposed this site for ease of logistics (40+ parking stalls, zero fees). Agent 2 (Auditor) checked the restricted equity dataset and detected only 4.1% uninsured rate. Siting mobile van here would waste public resources serving wealthy residents who already have primary care. Site rejected and resited."
+            }
+        ],
+        "safety_net_anchors": [
+            {
+                "name": "Grady Memorial Hospital",
+                "address": "80 Jesse Hill Jr Dr SE, Atlanta, GA",
+                "latitude": 33.7533,
+                "longitude": -84.3826,
+                "type": "Primary Safety-Net & Trauma Level 1 Center"
+            },
+            {
+                "name": "West End Medical Center (FQHC)",
+                "address": "868 York Ave SW, Atlanta, GA",
+                "latitude": 33.7380,
+                "longitude": -84.4250,
+                "type": "Federally Qualified Health Center (Safety-Net)"
+            },
+            {
+                "name": "Adamsville Regional Health Center",
+                "address": "3700 Martin Luther King Jr Dr SW, Atlanta, GA",
+                "latitude": 33.7550,
+                "longitude": -84.5010,
+                "type": "County Safety-Net Health Clinic"
+            },
+            {
+                "name": "South Fulton Medical Outpatient",
+                "address": "1170 Cleveland Ave, East Point, GA",
+                "latitude": 33.6600,
+                "longitude": -84.4500,
+                "type": "South Fulton Community Health Anchor"
+            }
+        ]
+    }
+
     return {
         "title": plan.title,
         "target_county": plan.target_county,
@@ -166,6 +222,7 @@ def get_active_schedule():
         "auditor_verdict": plan.section_2_auditor.convenience_vs_need_verdict,
         "reading_level": plan.section_3_communicator.reading_level_target,
         "schedule": schedule_data,
+        "map": map_data,
         "limitations": plan.section_4_limitations.model_dump()
     }
 
