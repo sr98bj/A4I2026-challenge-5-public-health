@@ -5,9 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fulton County Mobile Health Equity Portal</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; }
+    .chat-rendered-content ul { list-style-type: disc; margin-left: 1.25rem; margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .chat-rendered-content ol { list-style-type: decimal; margin-left: 1.25rem; margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .chat-rendered-content strong { color: #0f172a; font-weight: 700; }
+    .chat-rendered-content code { background-color: #f1f5f9; padding: 0.15rem 0.35rem; border-radius: 0.25rem; font-family: monospace; font-size: 0.85em; color: #065f46; }
+    .chat-rendered-content p { margin-bottom: 0.5rem; }
+    .chat-rendered-content p:last-child { margin-bottom: 0; }
   </style>
 </head>
 <body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
@@ -263,7 +270,7 @@
           <p class="text-[11px] font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
             <span>🎯</span> Official Challenge & Judge Questions (1-Click Test):
           </p>
-          <span class="text-[10px] text-slate-400">Click any card to query agents</span>
+          <span class="text-[10px] text-slate-400">Click any card to run query</span>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
@@ -309,7 +316,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
         
         <!-- Left Pane: Friendly Conversational Chat (7 Cols) -->
-        <div class="lg:col-span-7 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col h-[520px]">
+        <div class="lg:col-span-7 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col h-[560px]">
           <div class="p-3 border-b border-slate-200 flex justify-between items-center bg-slate-50/80 rounded-t-xl">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
@@ -321,18 +328,20 @@
           </div>
 
           <!-- Chat Messages Scroll Area -->
-          <div id="chat-messages" class="flex-1 p-3.5 overflow-y-auto space-y-3 text-xs sm:text-sm">
+          <div id="chat-messages" class="flex-1 p-3.5 overflow-y-auto space-y-3.5 text-xs sm:text-sm">
             
             <div class="flex items-start gap-2.5">
-              <div class="w-7 h-7 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-xs shrink-0">
+              <div class="w-7 h-7 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-1">
                 🚐
               </div>
-              <div class="bg-slate-100 rounded-2xl rounded-tl-none p-3 max-w-xl text-slate-800 text-xs">
-                <p class="font-semibold text-emerald-800 mb-1">Hello! I am your Fulton County Mobile Health Navigator.</p>
+              <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-none p-3.5 max-w-2xl text-slate-800 text-xs sm:text-sm shadow-sm space-y-1.5 chat-rendered-content">
+                <p class="font-bold text-emerald-900">Hello! I am your Fulton County Mobile Health Navigator.</p>
                 <p class="text-slate-600 leading-relaxed">
                   Ask me any question about where the mobile clinic visits, why specific neighborhoods were chosen, or what free medical services are provided.
                 </p>
-                <p class="mt-1.5 text-slate-500 text-[11px]">Click the challenge presets above or type any custom prompt below.</p>
+                <p class="text-slate-500 text-[11px] pt-1 border-t border-slate-100">
+                  Tip: Click any 1-click test button above or type questions directly below.
+                </p>
               </div>
             </div>
 
@@ -343,7 +352,7 @@
             <input 
               id="chat-input"
               type="text" 
-              placeholder="Type any question (e.g., 'How far is each neighborhood from care?' or 'Who cannot get to a clinic?')..." 
+              placeholder="Ask: 'How far is each neighborhood from a clinic?' or 'Who cannot get to a clinic?'..." 
               class="flex-1 text-xs border border-slate-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent"
               autocomplete="off"
             />
@@ -358,7 +367,7 @@
         </div>
 
         <!-- Right Pane: Live Agent Trace & Inspector (5 Cols) -->
-        <div class="lg:col-span-5 bg-slate-900 text-slate-200 rounded-xl shadow-md border border-slate-800 flex flex-col h-[520px] overflow-hidden">
+        <div class="lg:col-span-5 bg-slate-900 text-slate-200 rounded-xl shadow-md border border-slate-800 flex flex-col h-[560px] overflow-hidden">
           <div class="p-3 border-b border-slate-800 bg-slate-950 flex justify-between items-center">
             <div class="flex items-center gap-2">
               <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -368,7 +377,7 @@
           </div>
 
           <div id="agent-trace-container" class="flex-1 p-3.5 overflow-y-auto space-y-3 font-mono text-xs">
-            <div class="text-slate-500 text-center py-16 text-xs">
+            <div class="text-slate-500 text-center py-20 text-xs">
               [No active trace. Run a preset or ask a question to view live agent handoffs.]
             </div>
           </div>
@@ -540,6 +549,23 @@
     let activeScheduleData = null;
     let cachedTracts = [];
     let onlyDesertsFilter = false;
+
+    // Markdown Formatter
+    function renderMarkdownText(text) {
+      if (window.marked && typeof window.marked.parse === 'function') {
+        return window.marked.parse(text);
+      }
+      return text
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        .replace(/\n\n/g, '<p></p>')
+        .replace(/\n• /g, '<br>• ');
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
 
     // Tab Switching
     function switchTab(tabId) {
@@ -815,12 +841,12 @@
       const messagesContainer = document.getElementById('chat-messages');
       messagesContainer.innerHTML = `
         <div class="flex items-start gap-2.5">
-          <div class="w-7 h-7 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-xs shrink-0">
+          <div class="w-7 h-7 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-1">
             🚐
           </div>
-          <div class="bg-slate-100 rounded-2xl rounded-tl-none p-3 max-w-xl text-slate-800 text-xs">
-            <p class="font-semibold text-emerald-800 mb-1">Chat history cleared.</p>
-            <p class="text-slate-600">Ask any question or click a preset to test the agents.</p>
+          <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-none p-3.5 max-w-2xl text-slate-800 text-xs sm:text-sm shadow-sm space-y-1.5 chat-rendered-content">
+            <p class="font-bold text-emerald-900">Chat history cleared.</p>
+            <p class="text-slate-600">Ask any question or click a preset card above to test the agents.</p>
           </div>
         </div>
       `;
@@ -833,20 +859,21 @@
 
       if (role === 'user') {
         wrapper.innerHTML = `
-          <div class="bg-emerald-700 text-white rounded-2xl rounded-tr-none p-3 max-w-lg text-xs shadow-sm">
-            ${text}
+          <div class="bg-emerald-700 text-white rounded-2xl rounded-tr-none p-3 max-w-xl text-xs sm:text-sm shadow-sm leading-relaxed">
+            ${escapeHtml(text)}
           </div>
-          <div class="w-7 h-7 rounded-full bg-slate-300 text-slate-800 flex items-center justify-center font-bold text-xs shrink-0">
+          <div class="w-7 h-7 rounded-full bg-slate-300 text-slate-800 flex items-center justify-center font-bold text-xs shrink-0 mt-1">
             👤
           </div>
         `;
       } else {
+        const formattedHtml = renderMarkdownText(text);
         wrapper.innerHTML = `
-          <div class="w-7 h-7 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-xs shrink-0">
+          <div class="w-7 h-7 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-1">
             🚐
           </div>
-          <div class="bg-slate-100 rounded-2xl rounded-tl-none p-3 max-w-lg text-slate-800 text-xs whitespace-pre-line leading-relaxed">
-            ${text}
+          <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-none p-4 max-w-2xl text-slate-800 text-xs sm:text-sm shadow-sm leading-relaxed space-y-2 chat-rendered-content">
+            ${formattedHtml}
           </div>
         `;
       }
