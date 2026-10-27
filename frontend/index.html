@@ -8,74 +8,82 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; }
-    .tab-active { border-b-2 border-emerald-600 text-emerald-700 font-semibold; }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
 
-  <!-- Top Navigation Header -->
-  <header class="bg-emerald-800 text-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap justify-between items-center gap-4">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-lg bg-emerald-600 flex items-center justify-center font-black text-xl shadow-inner border border-emerald-400">
-          🚐
-        </div>
+  <!-- Compact, Non-Intrusive Top Navigation Header -->
+  <header class="bg-emerald-800 text-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap justify-between items-center gap-3">
+      
+      <!-- Brand & Identity -->
+      <div class="flex items-center space-x-2.5">
+        <span class="text-2xl">🚐</span>
         <div>
-          <h1 class="text-lg sm:text-xl font-bold tracking-tight flex items-center gap-2">
-            Fulton County Mobile Health Navigator
-            <span class="text-xs bg-emerald-950/60 text-emerald-200 px-2.5 py-0.5 rounded-full border border-emerald-500/30">ADK Multi-Agent</span>
-          </h1>
-          <p class="text-xs text-emerald-200">Public Health Equity & Mobile Clinic Siting System • Atlanta & Fulton County, GA</p>
+          <div class="flex items-center gap-2">
+            <h1 class="text-base sm:text-lg font-bold tracking-tight text-white leading-tight">
+              Fulton County Mobile Health Navigator
+            </h1>
+            <span class="text-[10px] bg-emerald-950/70 text-emerald-200 px-2 py-0.5 rounded font-mono border border-emerald-600/40">
+              ADK Multi-Agent
+            </span>
+          </div>
+          <p class="text-[11px] text-emerald-200 leading-none mt-0.5">
+            Public Health Equity & Mobile Clinic Siting • Atlanta & Fulton County, GA
+          </p>
         </div>
       </div>
       
-      <div class="flex items-center space-x-2 text-xs">
-        <span class="bg-emerald-900/80 px-3 py-1 rounded-md border border-emerald-700 flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          326 Fulton Tracts Live
+      <!-- Branch / Data Info -->
+      <div class="hidden sm:flex items-center space-x-2 text-xs">
+        <span class="bg-emerald-900/90 text-emerald-200 px-2.5 py-1 rounded border border-emerald-700/60 flex items-center gap-1.5 text-[11px]">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          326 Tracts Loaded
         </span>
-        <span class="bg-emerald-900/80 px-3 py-1 rounded-md border border-emerald-700 text-emerald-200">
+        <span class="bg-emerald-900/90 text-emerald-200 px-2.5 py-1 rounded border border-emerald-700/60 text-[11px]">
           Branch: <code class="text-white font-mono">feature/sr98bj-contri</code>
         </span>
       </div>
     </div>
 
-    <!-- Navigation Tabs -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-emerald-700/60 flex space-x-6 text-sm font-medium overflow-x-auto">
-      <button onclick="switchTab('dashboard')" id="tab-btn-dashboard" class="py-3 px-1 border-b-2 border-white text-white flex items-center gap-2">
-        📊 Health Equity Dashboard
-      </button>
-      <button onclick="switchTab('schedule')" id="tab-btn-schedule" class="py-3 px-1 border-b-2 border-transparent text-emerald-200 hover:text-white flex items-center gap-2">
-        🗓️ 4-Week Clinic Schedule & Flyers
-      </button>
-      <button onclick="switchTab('chat')" id="tab-btn-chat" class="py-3 px-1 border-b-2 border-transparent text-emerald-200 hover:text-white flex items-center gap-2">
-        💬 Ask the Agents (Chat Console)
-      </button>
-      <button onclick="switchTab('tracts')" id="tab-btn-tracts" class="py-3 px-1 border-b-2 border-transparent text-emerald-200 hover:text-white flex items-center gap-2">
-        🔍 326 Census Tract Explorer
-      </button>
+    <!-- Slim Tab Bar -->
+    <div class="bg-emerald-900/60 border-t border-emerald-700/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex space-x-2 sm:space-x-4 text-xs font-medium overflow-x-auto py-1">
+        <button onclick="switchTab('dashboard')" id="tab-btn-dashboard" class="py-2 px-3 rounded-md bg-emerald-700 text-white font-semibold flex items-center gap-1.5 transition">
+          📊 Health Equity Dashboard
+        </button>
+        <button onclick="switchTab('schedule')" id="tab-btn-schedule" class="py-2 px-3 rounded-md text-emerald-200 hover:text-white hover:bg-emerald-800/60 flex items-center gap-1.5 transition">
+          🗓️ 4-Week Schedule & Flyers
+        </button>
+        <button onclick="switchTab('chat')" id="tab-btn-chat" class="py-2 px-3 rounded-md text-emerald-200 hover:text-white hover:bg-emerald-800/60 flex items-center gap-1.5 transition">
+          💬 Ask the Agents (Chat)
+        </button>
+        <button onclick="switchTab('tracts')" id="tab-btn-tracts" class="py-2 px-3 rounded-md text-emerald-200 hover:text-white hover:bg-emerald-800/60 flex items-center gap-1.5 transition">
+          🔍 326 Tract Explorer
+        </button>
+      </div>
     </div>
   </header>
 
   <!-- Main Content Container -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex-1 w-full">
 
     <!-- ===================================================================== -->
     <!-- TAB 1: HEALTH EQUITY DASHBOARD                                        -->
     <!-- ===================================================================== -->
-    <div id="tab-dashboard" class="space-y-6">
+    <div id="tab-dashboard" class="space-y-5">
       
       <!-- Welcome Banner for Stakeholders -->
-      <div class="bg-gradient-to-r from-emerald-50 via-teal-50 to-sky-50 border border-emerald-200 rounded-xl p-5 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div class="bg-white border border-emerald-200/80 rounded-xl p-4 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
         <div>
-          <h2 class="text-lg font-bold text-emerald-950 flex items-center gap-2">
+          <h2 class="text-base font-bold text-emerald-950 flex items-center gap-2">
             <span>🏛️</span> Mobile Care Siting for City Officials & Community Advocates
           </h2>
-          <p class="text-sm text-slate-600 mt-1 max-w-3xl">
+          <p class="text-xs text-slate-600 mt-0.5 max-w-3xl">
             Where a mobile clinic parks determines whether care reaches vulnerable populations or simply serves people who already have insurance. Our ADK multi-agent architecture pairs physical van logistics with a strict equity audit to eliminate convenience bias.
           </p>
         </div>
-        <button onclick="switchTab('chat')" class="bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold px-4 py-2.5 rounded-lg shadow transition flex items-center gap-1.5 whitespace-nowrap">
+        <button onclick="switchTab('chat')" class="bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold px-3.5 py-2 rounded-lg shadow-sm transition flex items-center gap-1.5 whitespace-nowrap">
           <span>💬</span> Ask Agents Why a Site was Picked
         </button>
       </div>
@@ -83,86 +91,86 @@
       <!-- KPI Metrics Cards -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
-        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm relative overflow-hidden">
+        <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
           <div class="flex justify-between items-start">
             <div>
-              <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Safety-Net Clinic Deserts</p>
-              <h3 id="stat-deserts" class="text-3xl font-extrabold text-red-600 mt-1">135 tracts</h3>
-              <p class="text-xs text-slate-500 mt-1"><span class="font-bold text-red-700">41.4%</span> of Fulton County</p>
+              <p class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Safety-Net Clinic Deserts</p>
+              <h3 id="stat-deserts" class="text-2xl font-extrabold text-red-600 mt-1">135 tracts</h3>
+              <p class="text-[11px] text-slate-500 mt-0.5"><span class="font-bold text-red-700">41.4%</span> of Fulton County</p>
             </div>
-            <span class="text-2xl p-2 bg-red-50 rounded-lg">🏜️</span>
+            <span class="text-xl p-2 bg-red-50 rounded-lg">🏜️</span>
           </div>
-          <p class="text-xs text-slate-500 mt-3 border-t pt-2">Neighborhoods further from safety-net care than commercial care.</p>
+          <p class="text-[11px] text-slate-500 mt-2 border-t pt-2">Neighborhoods further from safety-net care than commercial care.</p>
         </div>
 
-        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm relative overflow-hidden">
+        <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
           <div class="flex justify-between items-start">
             <div>
-              <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Max Travel Deficit</p>
-              <h3 id="stat-extra-km" class="text-3xl font-extrabold text-amber-600 mt-1">+22.0 km</h3>
-              <p class="text-xs text-slate-500 mt-1">Extra distance if uninsured</p>
+              <p class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Max Travel Deficit</p>
+              <h3 id="stat-extra-km" class="text-2xl font-extrabold text-amber-600 mt-1">+23.5 km</h3>
+              <p class="text-[11px] text-slate-500 mt-0.5">Extra distance if uninsured</p>
             </div>
-            <span class="text-2xl p-2 bg-amber-50 rounded-lg">📏</span>
+            <span class="text-xl p-2 bg-amber-50 rounded-lg">📏</span>
           </div>
-          <p class="text-xs text-slate-500 mt-3 border-t pt-2">Extreme disparity in transit-poor corridors like South Fulton.</p>
+          <p class="text-[11px] text-slate-500 mt-2 border-t pt-2">Extreme disparity in transit-poor corridors like South Fulton.</p>
         </div>
 
-        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm relative overflow-hidden">
+        <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
           <div class="flex justify-between items-start">
             <div>
-              <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">County Healthcare Sites</p>
-              <h3 id="stat-sites" class="text-3xl font-extrabold text-emerald-700 mt-1">67 Facilities</h3>
-              <p class="text-xs text-slate-500 mt-1">FQHCs, Clinics, Hospitals</p>
+              <p class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">County Healthcare Sites</p>
+              <h3 id="stat-sites" class="text-2xl font-extrabold text-emerald-700 mt-1">67 Facilities</h3>
+              <p class="text-[11px] text-slate-500 mt-0.5">FQHCs, Clinics, Hospitals</p>
             </div>
-            <span class="text-2xl p-2 bg-emerald-50 rounded-lg">🏥</span>
+            <span class="text-xl p-2 bg-emerald-50 rounded-lg">🏥</span>
           </div>
-          <p class="text-xs text-slate-500 mt-3 border-t pt-2">Federally qualified health centers mapped in the county.</p>
+          <p class="text-[11px] text-slate-500 mt-2 border-t pt-2">Federally qualified health centers mapped across the county.</p>
         </div>
 
-        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm relative overflow-hidden">
+        <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
           <div class="flex justify-between items-start">
             <div>
-              <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Target Portfolio Score</p>
-              <h3 class="text-3xl font-extrabold text-indigo-600 mt-1">93.5 <span class="text-sm font-normal text-slate-400">/ 100</span></h3>
-              <p class="text-xs text-slate-500 mt-1"><span class="font-bold text-indigo-700">~160 patients</span> / month</p>
+              <p class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Target Portfolio Score</p>
+              <h3 class="text-2xl font-extrabold text-indigo-600 mt-1">93.5 <span class="text-xs font-normal text-slate-400">/ 100</span></h3>
+              <p class="text-[11px] text-slate-500 mt-0.5"><span class="font-bold text-indigo-700">~160 patients</span> / month</p>
             </div>
-            <span class="text-2xl p-2 bg-indigo-50 rounded-lg">🎯</span>
+            <span class="text-xl p-2 bg-indigo-50 rounded-lg">🎯</span>
           </div>
-          <p class="text-xs text-slate-500 mt-3 border-t pt-2">Audited equity score after eliminating convenience bias.</p>
+          <p class="text-[11px] text-slate-500 mt-2 border-t pt-2">Audited equity score after eliminating convenience bias.</p>
         </div>
 
       </div>
 
       <!-- Van Operations & Architectural Integrity Cards -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
         
         <!-- Van Specs & Operational Staging -->
-        <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
-          <h3 class="text-base font-bold text-slate-900 flex items-center gap-2 mb-4">
+        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+          <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2 mb-3">
             <span class="text-emerald-600">🚐</span> Mobile Medical Van Operational Feasibility
           </h3>
-          <div class="space-y-3 text-sm">
-            <div class="flex justify-between py-2 border-b border-slate-100">
+          <div class="space-y-2.5 text-xs">
+            <div class="flex justify-between py-1.5 border-b border-slate-100">
               <span class="text-slate-500">Vehicle Profile</span>
               <span class="font-semibold text-slate-800">High-Roof Sprinter Medical Van (24 ft)</span>
             </div>
-            <div class="flex justify-between py-2 border-b border-slate-100">
+            <div class="flex justify-between py-1.5 border-b border-slate-100">
               <span class="text-slate-500">Turning Clearance Required</span>
               <span class="font-semibold text-slate-800">25-ft turning radius</span>
             </div>
-            <div class="flex justify-between py-2 border-b border-slate-100">
+            <div class="flex justify-between py-1.5 border-b border-slate-100">
               <span class="text-slate-500">Parking Capacity</span>
               <span class="font-semibold text-slate-800">8–10 contiguous paved stalls (patient canopy)</span>
             </div>
-            <div class="flex justify-between py-2 border-b border-slate-100">
+            <div class="flex justify-between py-1.5 border-b border-slate-100">
               <span class="text-slate-500">Clinical Staffing</span>
               <span class="font-semibold text-slate-800">1 Nurse Practitioner, 1 Medical Assistant</span>
             </div>
-            <div class="flex justify-between py-2 border-b border-slate-100">
+            <div class="flex justify-between py-1.5 border-b border-slate-100">
               <span class="text-slate-500">Screening Equipment</span>
               <span class="font-semibold text-slate-800">Glucometer (blood sugar), Blood pressure cuff</span>
             </div>
-            <div class="flex justify-between py-2">
+            <div class="flex justify-between py-1.5">
               <span class="text-slate-500">Patient Throughput</span>
               <span class="font-semibold text-slate-800">~40 patients per Saturday (9:00 AM – 3:00 PM)</span>
             </div>
@@ -170,21 +178,21 @@
         </div>
 
         <!-- Architectural Context Barrier Disclosure -->
-        <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
-          <h3 class="text-base font-bold text-slate-900 flex items-center gap-2 mb-3">
+        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+          <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2 mb-2">
             <span class="text-amber-500">🛡️</span> Multi-Agent Context Separation (Why We Advance)
           </h3>
-          <p class="text-xs text-slate-600 mb-4">
+          <p class="text-[11px] text-slate-600 mb-3">
             A single agent or rubber-stamp auditor will naturally park at shopping centers in affluent Buckhead because parking is large and easy. Our system prevents this through structural separation:
           </p>
-          <div class="space-y-3 text-xs">
-            <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+          <div class="space-y-2 text-xs">
+            <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
               <span class="font-bold text-slate-900">Agent 1 (Planner):</span> Sees <span class="text-slate-700 font-semibold">ONLY</span> physical turning radius, parking stalls, and pavement. Programmatically forbidden from seeing income or uninsured rates.
             </div>
-            <div class="p-3 bg-red-50 rounded-lg border border-red-200">
+            <div class="p-2.5 bg-red-50 rounded-lg border border-red-200">
               <span class="font-bold text-red-900">Agent 2 (Auditor):</span> Holds the restricted <code class="font-mono bg-red-100 px-1 py-0.5 rounded text-red-800">tract_access</code> dataset. Detects the <span class="font-bold text-red-700">"Convenience Trap"</span> and rejects sites with low healthcare burden.
             </div>
-            <div class="p-3 bg-emerald-50 rounded-lg border border-emerald-200">
+            <div class="p-2.5 bg-emerald-50 rounded-lg border border-emerald-200">
               <span class="font-bold text-emerald-900">Agent 3 (Communicator):</span> Translates the audited stops into plain-English flyers mathematically verified at a <span class="font-bold text-emerald-700">6th-grade reading level</span>.
             </div>
           </div>
@@ -192,23 +200,23 @@
 
       </div>
 
-      <!-- Data Caveats & Limitations Disclosure (Section 4) -->
-      <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-5 text-xs text-amber-900">
-        <h4 class="font-bold flex items-center gap-1.5 text-sm mb-2 text-amber-950">
+      <!-- Data Limitations Disclosure (Section 4) -->
+      <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 text-xs text-amber-900">
+        <h4 class="font-bold flex items-center gap-1.5 text-xs mb-2 text-amber-950">
           <span>⚠️</span> Public Health Data Limitations Disclosure (Section 4)
         </h4>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
-          <div class="bg-white/80 p-3 rounded-lg border border-amber-200/60">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-1">
+          <div class="bg-white/80 p-2.5 rounded-lg border border-amber-200/60">
             <p class="font-bold text-slate-800">99 Withdrawn Shortage Areas:</p>
-            <p class="text-slate-600 mt-1">All 99 Fulton County HPSA areas are marked "Proposed For Withdrawal". The Auditor does not fail; it relies on <code class="font-mono text-xs">tract_access</code> as the primary ground truth.</p>
+            <p class="text-slate-600 mt-0.5 text-[11px]">All 99 Fulton County HPSA areas are marked "Proposed For Withdrawal". The Auditor relies on <code class="font-mono text-[10px]">tract_access</code> as the primary ground truth.</p>
           </div>
-          <div class="bg-white/80 p-3 rounded-lg border border-amber-200/60">
+          <div class="bg-white/80 p-2.5 rounded-lg border border-amber-200/60">
             <p class="font-bold text-slate-800">EPA PM2.5 12km Grid Trap:</p>
-            <p class="text-slate-600 mt-1">Fulton's p90/p10 PM2.5 ratio is only 1.046. Ranking tracts by air quality in Fulton is ranking on measurement noise.</p>
+            <p class="text-slate-600 mt-0.5 text-[11px]">Fulton's p90/p10 PM2.5 ratio is only 1.046. Ranking tracts by air quality in Fulton is ranking on measurement noise.</p>
           </div>
-          <div class="bg-white/80 p-3 rounded-lg border border-amber-200/60">
+          <div class="bg-white/80 p-2.5 rounded-lg border border-amber-200/60">
             <p class="font-bold text-slate-800">Regional HSA Disease Data:</p>
-            <p class="text-slate-600 mt-1"><code class="font-mono text-xs">disease_weekly</code> is an aggregate across 4 metro counties, not a neighborhood-level statistic.</p>
+            <p class="text-slate-600 mt-0.5 text-[11px]"><code class="font-mono text-[10px]">disease_weekly</code> is an aggregate across 4 metro counties, not a neighborhood-level statistic.</p>
           </div>
         </div>
       </div>
@@ -218,28 +226,27 @@
     <!-- ===================================================================== -->
     <!-- TAB 2: 4-WEEK CLINIC SCHEDULE & COMMUNITY FLYERS                      -->
     <!-- ===================================================================== -->
-    <div id="tab-schedule" class="hidden space-y-6">
+    <div id="tab-schedule" class="hidden space-y-5">
       
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
         <div>
-          <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+          <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
             🗓️ 4-Saturday Mobile Clinic Tour (Audited Deployment)
           </h2>
-          <p class="text-xs text-slate-500 mt-0.5">Serving ~40 patients each Saturday across diverse high-need corridors.</p>
+          <p class="text-xs text-slate-500">Serving ~40 patients each Saturday across diverse high-need corridors.</p>
         </div>
-        <div class="flex items-center gap-3">
-          <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full border border-emerald-300">
-            Overall Equity Score: 93.5 / 100
+        <div class="flex items-center gap-2">
+          <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-1 rounded-full border border-emerald-300">
+            Equity Score: 93.5 / 100
           </span>
-          <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full border border-blue-300">
-            Reading Level: 6th Grade Verified
+          <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-1 rounded-full border border-blue-300">
+            Reading Level: Grade 5.8
           </span>
         </div>
       </div>
 
       <!-- Schedule Cards Grid -->
-      <div id="schedule-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Rendered via JavaScript -->
+      <div id="schedule-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div class="text-center py-12 text-slate-400 col-span-2">Loading verified clinic schedule...</div>
       </div>
 
@@ -248,81 +255,79 @@
     <!-- ===================================================================== -->
     <!-- TAB 3: ASK THE AGENTS (CHAT CONSOLE)                                   -->
     <!-- ===================================================================== -->
-    <div id="tab-chat" class="hidden space-y-6">
+    <div id="tab-chat" class="hidden space-y-4">
       
       <!-- Preset Challenge Prompts Bar -->
-      <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
-        <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2.5">
-          💡 Quick Challenge Test Prompts (1-Click Execution):
+      <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm">
+        <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-2">
+          💡 Quick Challenge Test Presets:
         </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
-          <button onclick="sendPresetPrompt(1)" class="text-left p-3 rounded-lg border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition text-xs group">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+          <button onclick="sendPresetPrompt(1)" class="text-left p-2.5 rounded-lg border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition text-xs group">
             <span class="font-bold text-slate-800 block group-hover:text-emerald-700">⚡ Preset 1: Standard Plan</span>
-            <span class="text-slate-500 text-[11px] block mt-0.5">Site 4 Saturdays for 40 patients/day</span>
+            <span class="text-slate-500 text-[10px] block">Site 4 Saturdays for 40 pts/day</span>
           </button>
-          <button onclick="sendPresetPrompt(2)" class="text-left p-3 rounded-lg border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition text-xs group">
+          <button onclick="sendPresetPrompt(2)" class="text-left p-2.5 rounded-lg border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition text-xs group">
             <span class="font-bold text-slate-800 block group-hover:text-emerald-700">🩺 Preset 2: Chronic Disease</span>
-            <span class="text-slate-500 text-[11px] block mt-0.5">Diabetes & hypertension surge focus</span>
+            <span class="text-slate-500 text-[10px] block">Diabetes & hypertension surge</span>
           </button>
-          <button onclick="sendPresetPrompt(3)" class="text-left p-3 rounded-lg border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition text-xs group">
+          <button onclick="sendPresetPrompt(3)" class="text-left p-2.5 rounded-lg border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition text-xs group">
             <span class="font-bold text-slate-800 block group-hover:text-emerald-700">🚌 Preset 3: Transit Deserts</span>
-            <span class="text-slate-500 text-[11px] block mt-0.5">Zero-vehicle & transit locked areas</span>
+            <span class="text-slate-500 text-[10px] block">Zero-vehicle household focus</span>
           </button>
-          <button onclick="sendPresetPrompt(4)" class="text-left p-3 rounded-lg border border-amber-300 bg-amber-50/30 hover:border-amber-500 hover:bg-amber-100/50 transition text-xs group">
+          <button onclick="sendPresetPrompt(4)" class="text-left p-2.5 rounded-lg border border-amber-300 bg-amber-50/40 hover:border-amber-500 hover:bg-amber-100/60 transition text-xs group">
             <span class="font-bold text-amber-900 block">⚠️ Preset 4: Convenience Trap</span>
-            <span class="text-amber-700 text-[11px] block mt-0.5">Test Buckhead rejection & resiting</span>
+            <span class="text-amber-700 text-[10px] block">Buckhead rejection & resiting</span>
           </button>
         </div>
       </div>
 
       <!-- Dual Pane Chat & Agent Inspector -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
         
         <!-- Left Pane: Friendly Conversational Chat (7 Cols) -->
-        <div class="lg:col-span-7 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col h-[580px]">
-          <div class="p-4 border-b border-slate-200 flex justify-between items-center bg-slate-50/70 rounded-t-xl">
+        <div class="lg:col-span-7 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col h-[520px]">
+          <div class="p-3 border-b border-slate-200 flex justify-between items-center bg-slate-50/80 rounded-t-xl">
             <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-              <h3 class="font-bold text-sm text-slate-800">Public Health & Siting Assistant</h3>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <h3 class="font-bold text-xs sm:text-sm text-slate-800">Public Health Multi-Agent Assistant</h3>
             </div>
-            <span class="text-xs text-slate-500">Non-Technical Citizen View</span>
+            <button onclick="clearChatHistory()" class="text-[11px] text-slate-400 hover:text-slate-700 underline">
+              Clear Chat
+            </button>
           </div>
 
           <!-- Chat Messages Scroll Area -->
-          <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-4 text-sm">
+          <div id="chat-messages" class="flex-1 p-3.5 overflow-y-auto space-y-3 text-xs sm:text-sm">
             
-            <div class="flex items-start gap-3">
-              <div class="w-8 h-8 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-xs shrink-0">
+            <div class="flex items-start gap-2.5">
+              <div class="w-7 h-7 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-xs shrink-0">
                 🚐
               </div>
-              <div class="bg-slate-100 rounded-2xl rounded-tl-none p-3.5 max-w-xl text-slate-800 text-xs sm:text-sm">
-                <p class="font-semibold text-emerald-800 mb-1">Hello! I am your Fulton County Mobile Health Assistant.</p>
-                <p>You can ask me questions like:
-                  <ul class="list-disc list-inside mt-1.5 space-y-1 text-slate-600">
-                    <li><em>"Why did the clinic pick Bankhead instead of Buckhead?"</em></li>
-                    <li><em>"What free screenings are offered on the van?"</em></li>
-                    <li><em>"How does the audit catch the convenience trap?"</em></li>
-                  </ul>
+              <div class="bg-slate-100 rounded-2xl rounded-tl-none p-3 max-w-xl text-slate-800 text-xs">
+                <p class="font-semibold text-emerald-800 mb-1">Hello! I am your Fulton County Mobile Health Navigator.</p>
+                <p class="text-slate-600 leading-relaxed">
+                  Ask me any question about where the mobile clinic visits, why specific neighborhoods were chosen, or what free medical services are provided.
                 </p>
-                <p class="mt-2 text-slate-500 text-xs">Or click one of the quick test presets above to test the agents.</p>
+                <p class="mt-1.5 text-slate-500 text-[11px]">You can ask as many questions as you like below.</p>
               </div>
             </div>
 
           </div>
 
           <!-- Chat Input Form -->
-          <form onsubmit="handleChatSubmit(event)" class="p-3 border-t border-slate-200 bg-white rounded-b-xl flex gap-2">
+          <form id="chat-form" onsubmit="handleChatSubmit(event)" class="p-2.5 border-t border-slate-200 bg-white rounded-b-xl flex gap-2">
             <input 
               id="chat-input"
               type="text" 
-              placeholder="Ask a question about mobile clinic locations, services, or equity..." 
-              class="flex-1 text-xs sm:text-sm border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent"
+              placeholder="Ask any question (e.g., 'Why was Buckhead rejected?' or 'What services are free?')..." 
+              class="flex-1 text-xs border border-slate-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent"
               autocomplete="off"
             />
             <button 
               id="chat-send-btn"
               type="submit" 
-              class="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs px-5 py-2.5 rounded-lg shadow transition shrink-0 flex items-center gap-1"
+              class="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs px-4 py-2.5 rounded-lg shadow transition shrink-0 flex items-center gap-1"
             >
               <span>Send</span> ➔
             </button>
@@ -330,8 +335,8 @@
         </div>
 
         <!-- Right Pane: Live Agent Trace & Inspector (5 Cols) -->
-        <div class="lg:col-span-5 bg-slate-900 text-slate-200 rounded-xl shadow-md border border-slate-800 flex flex-col h-[580px] overflow-hidden">
-          <div class="p-3.5 border-b border-slate-800 bg-slate-950 flex justify-between items-center">
+        <div class="lg:col-span-5 bg-slate-900 text-slate-200 rounded-xl shadow-md border border-slate-800 flex flex-col h-[520px] overflow-hidden">
+          <div class="p-3 border-b border-slate-800 bg-slate-950 flex justify-between items-center">
             <div class="flex items-center gap-2">
               <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <h3 class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">Live Agent Handoff Trace</h3>
@@ -339,8 +344,8 @@
             <span class="text-[10px] text-slate-400 font-mono">ADK Inspection</span>
           </div>
 
-          <div id="agent-trace-container" class="flex-1 p-4 overflow-y-auto space-y-4 font-mono text-xs">
-            <div class="text-slate-500 text-center py-16">
+          <div id="agent-trace-container" class="flex-1 p-3.5 overflow-y-auto space-y-3 font-mono text-xs">
+            <div class="text-slate-500 text-center py-16 text-xs">
               [No active trace. Run a preset or ask a question to view live agent handoffs.]
             </div>
           </div>
@@ -353,26 +358,26 @@
     <!-- ===================================================================== -->
     <!-- TAB 4: 326 CENSUS TRACT EXPLORER                                      -->
     <!-- ===================================================================== -->
-    <div id="tab-tracts" class="hidden space-y-6">
+    <div id="tab-tracts" class="hidden space-y-4">
       
-      <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
         <div>
-          <h2 class="text-lg font-bold text-slate-900">326 Fulton County Census Tracts Explorer</h2>
-          <p class="text-xs text-slate-500 mt-0.5">Explore real healthcare desert indicators, uninsured rates, and distance to safety-net care.</p>
+          <h2 class="text-base font-bold text-slate-900">326 Fulton County Census Tracts Explorer</h2>
+          <p class="text-xs text-slate-500">Explore real healthcare desert indicators, uninsured rates, and distance to safety-net care.</p>
         </div>
         
-        <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+        <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
           <input 
             id="tract-search"
             oninput="handleTractSearch()"
             type="text" 
-            placeholder="Filter by tract ID (e.g. 13121011635)..." 
-            class="text-xs border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-emerald-600 focus:outline-none w-full md:w-64"
+            placeholder="Search tract ID (e.g. 13121011635)..." 
+            class="text-xs border border-slate-300 rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-emerald-600 focus:outline-none w-full md:w-56"
           />
           <button 
             id="filter-desert-btn"
             onclick="toggleDesertFilter()" 
-            class="text-xs px-3 py-2 rounded-lg border border-red-300 bg-red-50 text-red-700 font-medium hover:bg-red-100 transition whitespace-nowrap"
+            class="text-xs px-3 py-1.5 rounded-lg border border-red-300 bg-red-50 text-red-700 font-medium hover:bg-red-100 transition whitespace-nowrap"
           >
             Show Safety-Net Deserts Only
           </button>
@@ -384,19 +389,19 @@
         <table class="w-full text-left text-xs">
           <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 uppercase tracking-wider font-semibold">
             <tr>
-              <th class="py-3 px-4">Tract GeoID</th>
-              <th class="py-3 px-4">Population</th>
-              <th class="py-3 px-4">Uninsured Rate</th>
-              <th class="py-3 px-4">Safety-Net Dist</th>
-              <th class="py-3 px-4">Extra KM (Deficit)</th>
-              <th class="py-3 px-4">No Vehicle %</th>
-              <th class="py-3 px-4">Diabetes %</th>
-              <th class="py-3 px-4">Status</th>
+              <th class="py-2.5 px-3">Tract GeoID</th>
+              <th class="py-2.5 px-3">Population</th>
+              <th class="py-2.5 px-3">Uninsured Rate</th>
+              <th class="py-2.5 px-3">Safety-Net Dist</th>
+              <th class="py-2.5 px-3">Extra KM (Deficit)</th>
+              <th class="py-2.5 px-3">No Vehicle %</th>
+              <th class="py-2.5 px-3">Diabetes %</th>
+              <th class="py-2.5 px-3">Status</th>
             </tr>
           </thead>
           <tbody id="tract-table-body" class="divide-y divide-slate-100">
             <tr>
-              <td colspan="8" class="text-center py-12 text-slate-400">Loading tract records...</td>
+              <td colspan="8" class="text-center py-10 text-slate-400">Loading tract records...</td>
             </tr>
           </tbody>
         </table>
@@ -408,64 +413,64 @@
 
   <!-- Community Flyer Popup Modal -->
   <div id="flyer-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-100 p-6 relative">
-      <button onclick="closeFlyerModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl font-bold p-1">
+    <div class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-100 p-5 relative">
+      <button onclick="closeFlyerModal()" class="absolute top-3.5 right-3.5 text-slate-400 hover:text-slate-700 text-lg font-bold p-1">
         ✕
       </button>
 
-      <div class="text-center border-b pb-4 mb-4">
-        <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+      <div class="text-center border-b pb-3 mb-3">
+        <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
           Community Outreach Flyer • 6th-Grade Reading Level
         </span>
-        <h2 id="modal-flyer-title" class="text-2xl font-extrabold text-slate-900 mt-2">Free Health Checkup Van</h2>
-        <p id="modal-flyer-date" class="text-sm font-semibold text-emerald-700 mt-1">Saturday Week 1 • 9:00 AM – 3:00 PM</p>
+        <h2 id="modal-flyer-title" class="text-xl font-extrabold text-slate-900 mt-1.5">Free Health Checkup Van</h2>
+        <p id="modal-flyer-date" class="text-xs font-semibold text-emerald-700 mt-0.5">Saturday Week 1 • 9:00 AM – 3:00 PM</p>
       </div>
 
-      <div class="space-y-4 text-sm">
+      <div class="space-y-3 text-xs">
         
         <!-- Trust Banner -->
-        <div class="bg-emerald-700 text-white p-4 rounded-xl text-center shadow-sm">
-          <p class="font-extrabold text-base">💰 100% FREE TO EVERYONE</p>
-          <p class="text-xs text-emerald-100 mt-0.5">No health insurance needed. No government ID required. Walk-ins welcome.</p>
+        <div class="bg-emerald-700 text-white p-3 rounded-xl text-center shadow-sm">
+          <p class="font-extrabold text-sm">💰 100% FREE TO EVERYONE</p>
+          <p class="text-[11px] text-emerald-100 mt-0.5">No health insurance needed. No government ID required. Walk-ins welcome.</p>
         </div>
 
         <div>
           <h4 class="font-bold text-slate-900 flex items-center gap-1.5">
             <span>📍</span> Where We Will Be:
           </h4>
-          <p id="modal-flyer-location" class="text-slate-700 mt-1 bg-slate-50 p-2.5 rounded-lg border border-slate-100 text-xs font-medium"></p>
+          <p id="modal-flyer-location" class="text-slate-700 mt-0.5 bg-slate-50 p-2 rounded-lg border border-slate-100 text-[11px] font-medium"></p>
         </div>
 
         <div>
           <h4 class="font-bold text-slate-900 flex items-center gap-1.5">
             <span>🚍</span> How to Get There:
           </h4>
-          <p id="modal-flyer-transit" class="text-slate-700 mt-1 text-xs"></p>
+          <p id="modal-flyer-transit" class="text-slate-700 mt-0.5 text-[11px]"></p>
         </div>
 
         <div>
           <h4 class="font-bold text-slate-900 flex items-center gap-1.5">
             <span>🩺</span> What Free Screenings are Offered:
           </h4>
-          <ul id="modal-flyer-services" class="list-disc list-inside mt-1 text-xs text-slate-700 space-y-1"></ul>
+          <ul id="modal-flyer-services" class="list-disc list-inside mt-0.5 text-[11px] text-slate-700 space-y-0.5"></ul>
         </div>
 
         <div>
           <h4 class="font-bold text-slate-900 flex items-center gap-1.5">
             <span>🎒</span> What to Bring:
           </h4>
-          <p id="modal-flyer-bring" class="text-slate-700 mt-1 text-xs"></p>
+          <p id="modal-flyer-bring" class="text-slate-700 mt-0.5 text-[11px]"></p>
         </div>
 
-        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-[11px] text-slate-500">
+        <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 text-[10px] text-slate-500">
           <span class="font-semibold text-slate-700">Service Boundaries:</span>
           <span id="modal-flyer-limits"></span>
         </div>
 
       </div>
 
-      <div class="mt-6 pt-4 border-t flex justify-end">
-        <button onclick="closeFlyerModal()" class="bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold px-4 py-2 rounded-lg">
+      <div class="mt-4 pt-3 border-t flex justify-end">
+        <button onclick="closeFlyerModal()" class="bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg">
           Close Flyer
         </button>
       </div>
@@ -474,34 +479,34 @@
 
   <!-- Siting Audit Justification Modal -->
   <div id="audit-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-100 p-6 relative">
-      <button onclick="closeAuditModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl font-bold p-1">
+    <div class="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-100 p-5 relative">
+      <button onclick="closeAuditModal()" class="absolute top-3.5 right-3.5 text-slate-400 hover:text-slate-700 text-lg font-bold p-1">
         ✕
       </button>
 
-      <div class="border-b pb-3 mb-4">
-        <span class="bg-indigo-100 text-indigo-800 text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+      <div class="border-b pb-2.5 mb-3">
+        <span class="bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
           Public Health Equity Audit Justification
         </span>
-        <h3 id="modal-audit-title" class="text-xl font-bold text-slate-900 mt-2">Audit Report</h3>
-        <p id="modal-audit-neighborhood" class="text-xs text-slate-500"></p>
+        <h3 id="modal-audit-title" class="text-lg font-bold text-slate-900 mt-1">Audit Report</h3>
+        <p id="modal-audit-neighborhood" class="text-[11px] text-slate-500"></p>
       </div>
 
-      <div id="modal-audit-content" class="space-y-3 text-xs text-slate-700">
+      <div id="modal-audit-content" class="space-y-2.5 text-xs text-slate-700">
         <!-- Filled via JS -->
       </div>
 
-      <div class="mt-6 pt-3 border-t flex justify-end">
-        <button onclick="closeAuditModal()" class="bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold px-4 py-2 rounded-lg">
+      <div class="mt-4 pt-2.5 border-t flex justify-end">
+        <button onclick="closeAuditModal()" class="bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg">
           Close Justification
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500 mt-8">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+  <!-- Slim Footer -->
+  <footer class="bg-white border-t border-slate-200 py-3 text-center text-xs text-slate-500 mt-6">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-1.5">
       <p>Fulton County Mobile Health Equity Multi-Agent System • Public Health Hackathon 2026</p>
       <p class="text-emerald-700 font-medium">Branch: <span class="font-mono">feature/sr98bj-contri</span></p>
     </div>
@@ -520,10 +525,10 @@
         const btn = document.getElementById(`tab-btn-${t}`);
         if (t === tabId) {
           el.classList.remove('hidden');
-          btn.className = "py-3 px-1 border-b-2 border-white text-white flex items-center gap-2";
+          btn.className = "py-2 px-3 rounded-md bg-emerald-700 text-white font-semibold flex items-center gap-1.5 transition";
         } else {
           el.classList.add('hidden');
-          btn.className = "py-3 px-1 border-b-2 border-transparent text-emerald-200 hover:text-white flex items-center gap-2";
+          btn.className = "py-2 px-3 rounded-md text-emerald-200 hover:text-white hover:bg-emerald-800/60 flex items-center gap-1.5 transition";
         }
       });
       if (tabId === 'schedule' && !activeScheduleData) loadSchedule();
@@ -560,53 +565,51 @@
       container.innerHTML = '';
 
       schedule.forEach((item, idx) => {
-        const isTrap = item.audit.convenience_trap_flag;
         const tierBadge = item.audit.equity_need_tier.includes("Critical") 
           ? "bg-red-100 text-red-800 border-red-300"
           : "bg-amber-100 text-amber-800 border-amber-300";
 
         const card = document.createElement('div');
-        card.className = "bg-white rounded-xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between hover:shadow-md transition";
+        card.className = "bg-white rounded-xl border border-slate-200 shadow-sm p-4 flex flex-col justify-between hover:shadow-md transition";
         card.innerHTML = `
           <div>
             <div class="flex justify-between items-start gap-2">
               <div>
-                <span class="text-xs font-bold text-emerald-700 tracking-wider uppercase">Week ${item.saturday_index} Deployment</span>
-                <h3 class="text-lg font-extrabold text-slate-900 mt-0.5">${item.neighborhood_name}</h3>
+                <span class="text-[11px] font-bold text-emerald-700 tracking-wider uppercase">Week ${item.saturday_index} Deployment</span>
+                <h3 class="text-base font-extrabold text-slate-900 mt-0.5">${item.neighborhood_name}</h3>
                 <p class="text-xs text-slate-500 font-medium">${item.intersection}</p>
               </div>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-full border ${tierBadge}">
+              <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full border ${tierBadge}">
                 ${item.audit.equity_need_tier}
               </span>
             </div>
 
-            <!-- Key Metrics Grid -->
-            <div class="grid grid-cols-3 gap-2 my-4 p-3 bg-slate-50 rounded-lg text-center text-xs">
+            <div class="grid grid-cols-3 gap-2 my-3 p-2.5 bg-slate-50 rounded-lg text-center text-xs">
               <div>
                 <span class="text-slate-400 block text-[10px] uppercase font-bold">Uninsured</span>
-                <span class="font-extrabold text-slate-800 text-sm">${item.audit.uninsured_rate_pct}%</span>
+                <span class="font-extrabold text-slate-800 text-xs">${item.audit.uninsured_rate_pct}%</span>
               </div>
               <div>
                 <span class="text-slate-400 block text-[10px] uppercase font-bold">Transit Time</span>
-                <span class="font-extrabold text-slate-800 text-sm">${Math.round(item.audit.transit_travel_time_min)} min</span>
+                <span class="font-extrabold text-slate-800 text-xs">${Math.round(item.audit.transit_travel_time_min)} min</span>
               </div>
               <div>
                 <span class="text-slate-400 block text-[10px] uppercase font-bold">Target</span>
-                <span class="font-extrabold text-slate-800 text-sm">~${item.estimated_patients} pts</span>
+                <span class="font-extrabold text-slate-800 text-xs">~${item.estimated_patients} pts</span>
               </div>
             </div>
 
-            <div class="text-xs text-slate-600 bg-emerald-50/50 p-2.5 rounded-lg border border-emerald-100 mb-4">
+            <div class="text-[11px] text-slate-600 bg-emerald-50/50 p-2 rounded-lg border border-emerald-100 mb-3">
               <span class="font-bold text-emerald-950 block mb-0.5">Physical Logistics:</span>
               ${item.operational_rationale}
             </div>
           </div>
 
-          <div class="flex gap-2 pt-3 border-t border-slate-100">
-            <button onclick="openFlyerModal(${idx})" class="flex-1 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold py-2 px-3 rounded-lg shadow-sm transition text-center">
+          <div class="flex gap-2 pt-2.5 border-t border-slate-100">
+            <button onclick="openFlyerModal(${idx})" class="flex-1 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold py-1.5 px-3 rounded-lg shadow-sm transition text-center">
               📄 Community Flyer
             </button>
-            <button onclick="openAuditModal(${idx})" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold py-2 px-3 rounded-lg transition">
+            <button onclick="openAuditModal(${idx})" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold py-1.5 px-3 rounded-lg transition">
               ⚖️ Audit Details
             </button>
           </div>
@@ -654,7 +657,7 @@
 
       const content = document.getElementById('modal-audit-content');
       content.innerHTML = `
-        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+        <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200 space-y-1.5 text-xs">
           <div class="flex justify-between">
             <span class="text-slate-500 font-semibold">Uninsured Adult Rate:</span>
             <span class="font-bold text-slate-800">${audit.uninsured_rate_pct}%</span>
@@ -665,18 +668,18 @@
           </div>
           <div class="flex justify-between">
             <span class="text-slate-500 font-semibold">Transit Travel Time:</span>
-            <span class="font-bold text-slate-800">${Math.round(audit.transit_travel_time_min)} minutes (${audit.bus_transfers_required} transfers)</span>
+            <span class="font-bold text-slate-800">${Math.round(audit.transit_travel_time_min)} min (${audit.bus_transfers_required} transfers)</span>
           </div>
           <div class="flex justify-between">
-            <span class="text-slate-500 font-semibold">Convenience Trap Flag:</span>
+            <span class="text-slate-500 font-semibold">Convenience Trap Check:</span>
             <span class="font-bold ${audit.convenience_trap_flag ? 'text-red-600' : 'text-emerald-600'}">
               ${audit.convenience_trap_flag ? '⚠️ YES (Biased Location)' : '✅ PASS (High Need Verified)'}
             </span>
           </div>
         </div>
 
-        <div class="p-3 bg-indigo-50 rounded-lg border border-indigo-100">
-          <span class="font-bold text-indigo-900 block mb-1">Auditor Verification Note:</span>
+        <div class="p-2.5 bg-indigo-50 rounded-lg border border-indigo-100 text-xs">
+          <span class="font-bold text-indigo-900 block mb-0.5">Auditor Verification Note:</span>
           <p class="text-slate-600 leading-relaxed">${audit.audit_findings}</p>
         </div>
       `;
@@ -706,7 +709,7 @@
       tbody.innerHTML = '';
 
       if (tracts.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="8" class="text-center py-8 text-slate-400">No census tracts matched your filter.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="8" class="text-center py-6 text-slate-400">No census tracts matched your filter.</td></tr>`;
         return;
       }
 
@@ -714,20 +717,20 @@
         const tr = document.createElement('tr');
         tr.className = "hover:bg-slate-50/80 transition";
         const badge = t.is_safety_net_desert 
-          ? `<span class="bg-red-50 text-red-700 px-2 py-0.5 rounded text-[10px] font-bold border border-red-200">Desert (+${t.extra_km_if_uninsured}km)</span>`
-          : `<span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded text-[10px]">Normal</span>`;
+          ? `<span class="bg-red-50 text-red-700 px-1.5 py-0.5 rounded text-[10px] font-bold border border-red-200">Desert (+${t.extra_km_if_uninsured}km)</span>`
+          : `<span class="bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded text-[10px]">Normal</span>`;
 
         tr.innerHTML = `
-          <td class="py-2.5 px-4 font-mono font-medium text-slate-800">${t.geo_id}</td>
-          <td class="py-2.5 px-4 text-slate-600">${t.total_pop.toLocaleString()}</td>
-          <td class="py-2.5 px-4 font-semibold text-slate-800">${t.pct_uninsured}%</td>
-          <td class="py-2.5 px-4 text-slate-600">${t.km_to_safety_net} km</td>
-          <td class="py-2.5 px-4 font-bold ${t.extra_km_if_uninsured > 0 ? 'text-red-600' : 'text-slate-500'}">
+          <td class="py-2 px-3 font-mono font-medium text-slate-800">${t.geo_id}</td>
+          <td class="py-2 px-3 text-slate-600">${t.total_pop.toLocaleString()}</td>
+          <td class="py-2 px-3 font-semibold text-slate-800">${t.pct_uninsured}%</td>
+          <td class="py-2 px-3 text-slate-600">${t.km_to_safety_net} km</td>
+          <td class="py-2 px-3 font-bold ${t.extra_km_if_uninsured > 0 ? 'text-red-600' : 'text-slate-500'}">
             ${t.extra_km_if_uninsured > 0 ? `+${t.extra_km_if_uninsured} km` : '0 km'}
           </td>
-          <td class="py-2.5 px-4 text-slate-600">${t.pct_no_vehicle}%</td>
-          <td class="py-2.5 px-4 text-slate-600">${t.pct_diabetes}%</td>
-          <td class="py-2.5 px-4">${badge}</td>
+          <td class="py-2 px-3 text-slate-600">${t.pct_no_vehicle}%</td>
+          <td class="py-2 px-3 text-slate-600">${t.pct_diabetes}%</td>
+          <td class="py-2 px-3">${badge}</td>
         `;
         tbody.appendChild(tr);
       });
@@ -743,16 +746,19 @@
       onlyDesertsFilter = !onlyDesertsFilter;
       const btn = document.getElementById('filter-desert-btn');
       if (onlyDesertsFilter) {
-        btn.className = "text-xs px-3 py-2 rounded-lg border border-red-600 bg-red-600 text-white font-medium whitespace-nowrap";
+        btn.className = "text-xs px-3 py-1.5 rounded-lg border border-red-600 bg-red-600 text-white font-medium whitespace-nowrap";
       } else {
-        btn.className = "text-xs px-3 py-2 rounded-lg border border-red-300 bg-red-50 text-red-700 font-medium hover:bg-red-100 transition whitespace-nowrap";
+        btn.className = "text-xs px-3 py-1.5 rounded-lg border border-red-300 bg-red-50 text-red-700 font-medium hover:bg-red-100 transition whitespace-nowrap";
       }
       loadTracts();
     }
 
     // Chat Console Logic
     async function handleChatSubmit(e) {
-      if (e) e.preventDefault();
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
       const input = document.getElementById('chat-input');
       const text = input.value.trim();
       if (!text) return;
@@ -760,6 +766,7 @@
       appendChatMessage("user", text);
       input.value = "";
       await executeChatQuery(text, null);
+      setTimeout(() => input.focus(), 50);
     }
 
     async function sendPresetPrompt(presetId) {
@@ -773,28 +780,45 @@
       const prompt = presetPrompts[presetId];
       appendChatMessage("user", prompt);
       await executeChatQuery(prompt, presetId);
+      const input = document.getElementById('chat-input');
+      setTimeout(() => input.focus(), 50);
+    }
+
+    function clearChatHistory() {
+      const messagesContainer = document.getElementById('chat-messages');
+      messagesContainer.innerHTML = `
+        <div class="flex items-start gap-2.5">
+          <div class="w-7 h-7 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-xs shrink-0">
+            🚐
+          </div>
+          <div class="bg-slate-100 rounded-2xl rounded-tl-none p-3 max-w-xl text-slate-800 text-xs">
+            <p class="font-semibold text-emerald-800 mb-1">Chat history cleared.</p>
+            <p class="text-slate-600">Ask any question or click a preset to test the agents.</p>
+          </div>
+        </div>
+      `;
     }
 
     function appendChatMessage(role, text) {
       const messagesContainer = document.getElementById('chat-messages');
       const wrapper = document.createElement('div');
-      wrapper.className = `flex items-start gap-3 ${role === 'user' ? 'justify-end' : ''}`;
+      wrapper.className = `flex items-start gap-2.5 ${role === 'user' ? 'justify-end' : ''}`;
 
       if (role === 'user') {
         wrapper.innerHTML = `
-          <div class="bg-emerald-700 text-white rounded-2xl rounded-tr-none p-3.5 max-w-lg text-xs sm:text-sm shadow-sm">
+          <div class="bg-emerald-700 text-white rounded-2xl rounded-tr-none p-3 max-w-lg text-xs shadow-sm">
             ${text}
           </div>
-          <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs shrink-0">
+          <div class="w-7 h-7 rounded-full bg-slate-300 text-slate-800 flex items-center justify-center font-bold text-xs shrink-0">
             👤
           </div>
         `;
       } else {
         wrapper.innerHTML = `
-          <div class="w-8 h-8 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-xs shrink-0">
+          <div class="w-7 h-7 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-xs shrink-0">
             🚐
           </div>
-          <div class="bg-slate-100 rounded-2xl rounded-tl-none p-3.5 max-w-lg text-slate-800 text-xs sm:text-sm whitespace-pre-line leading-relaxed">
+          <div class="bg-slate-100 rounded-2xl rounded-tl-none p-3 max-w-lg text-slate-800 text-xs whitespace-pre-line leading-relaxed">
             ${text}
           </div>
         `;
@@ -832,9 +856,9 @@
       const container = document.getElementById('agent-trace-container');
       container.innerHTML = '';
 
-      trace.forEach(step => {
+      trace.forEach((step, idx) => {
         const div = document.createElement('div');
-        div.className = "p-3 rounded-lg bg-slate-950 border border-slate-800 space-y-1.5";
+        div.className = "p-2.5 rounded-lg bg-slate-950 border border-slate-800 space-y-1";
         
         let color = "text-sky-400";
         if (step.agent.includes("Auditor")) color = "text-amber-400";
@@ -842,12 +866,12 @@
 
         div.innerHTML = `
           <div class="flex justify-between items-center border-b border-slate-800/80 pb-1">
-            <span class="font-bold ${color}">[${step.agent}]</span>
+            <span class="font-bold ${color}">Step ${idx+1}: [${step.agent}]</span>
             <span class="text-[10px] text-slate-500">${step.role}</span>
           </div>
           <p class="text-slate-300 text-[11px] leading-relaxed">${step.action}</p>
           ${step.output_summary ? `<div class="text-[10px] text-slate-400 bg-slate-900/80 p-1.5 rounded font-mono">Output: ${step.output_summary}</div>` : ''}
-          ${step.overall_equity_score ? `<div class="text-[10px] text-amber-300">Equity Score: ${step.overall_equity_score}/100 • Traps Flagged: ${step.convenience_traps_flagged}</div>` : ''}
+          ${step.overall_equity_score ? `<div class="text-[10px] text-amber-300">Equity Score: ${step.overall_equity_score}/100 • Traps: ${step.convenience_traps_flagged}</div>` : ''}
           ${step.reading_grade_level ? `<div class="text-[10px] text-emerald-300">Readability Checked: Grade ${step.reading_grade_level} (Pass <= 6.5)</div>` : ''}
         `;
         container.appendChild(div);
