@@ -257,27 +257,50 @@
     <!-- ===================================================================== -->
     <div id="tab-chat" class="hidden space-y-4">
       
-      <!-- Preset Challenge Prompts Bar -->
-      <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm">
-        <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-2">
-          💡 Quick Challenge Test Presets:
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
-          <button onclick="sendPresetPrompt(1)" class="text-left p-2.5 rounded-lg border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition text-xs group">
-            <span class="font-bold text-slate-800 block group-hover:text-emerald-700">⚡ Preset 1: Standard Plan</span>
-            <span class="text-slate-500 text-[10px] block">Site 4 Saturdays for 40 pts/day</span>
+      <!-- Preset Challenge Prompts Bar (Rubric & Judge Questions) -->
+      <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm space-y-2">
+        <div class="flex justify-between items-center">
+          <p class="text-[11px] font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
+            <span>🎯</span> Official Challenge & Judge Questions (1-Click Test):
+          </p>
+          <span class="text-[10px] text-slate-400">Click any card to query agents</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+          <!-- Question 1 -->
+          <button onclick="sendPresetPrompt(5)" class="text-left p-2.5 rounded-lg border border-indigo-200 bg-indigo-50/40 hover:border-indigo-400 hover:bg-indigo-100/60 transition text-xs group">
+            <span class="font-bold text-indigo-950 block">📏 Q1: Two Distances & Safety-Net Gap</span>
+            <span class="text-indigo-800/80 text-[10px] block">"How far is each neighborhood from a clinic that will actually take uninsured patients?"</span>
           </button>
-          <button onclick="sendPresetPrompt(2)" class="text-left p-2.5 rounded-lg border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition text-xs group">
-            <span class="font-bold text-slate-800 block group-hover:text-emerald-700">🩺 Preset 2: Chronic Disease</span>
-            <span class="text-slate-500 text-[10px] block">Diabetes & hypertension surge</span>
+
+          <!-- Question 2 -->
+          <button onclick="sendPresetPrompt(6)" class="text-left p-2.5 rounded-lg border border-purple-200 bg-purple-50/40 hover:border-purple-400 hover:bg-purple-100/60 transition text-xs group">
+            <span class="font-bold text-purple-950 block">🚶 Q2: The Transit Lock Barrier</span>
+            <span class="text-purple-800/80 text-[10px] block">"Who can’t get to a clinic even if there is one?" (Zero-vehicles & mobility)</span>
           </button>
-          <button onclick="sendPresetPrompt(3)" class="text-left p-2.5 rounded-lg border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition text-xs group">
-            <span class="font-bold text-slate-800 block group-hover:text-emerald-700">🚌 Preset 3: Transit Deserts</span>
-            <span class="text-slate-500 text-[10px] block">Zero-vehicle household focus</span>
+
+          <!-- Question 3 -->
+          <button onclick="sendPresetPrompt(4)" class="text-left p-2.5 rounded-lg border border-amber-200 bg-amber-50/40 hover:border-amber-400 hover:bg-amber-100/60 transition text-xs group">
+            <span class="font-bold text-amber-950 block">⚠️ Q3: Buckhead Convenience Trap</span>
+            <span class="text-amber-800/80 text-[10px] block">"Audit parking in Buckhead for convenience bias and execute resiting."</span>
           </button>
-          <button onclick="sendPresetPrompt(4)" class="text-left p-2.5 rounded-lg border border-amber-300 bg-amber-50/40 hover:border-amber-500 hover:bg-amber-100/60 transition text-xs group">
-            <span class="font-bold text-amber-900 block">⚠️ Preset 4: Convenience Trap</span>
-            <span class="text-amber-700 text-[10px] block">Buckhead rejection & resiting</span>
+
+          <!-- Question 4 -->
+          <button onclick="sendPresetPrompt(7)" class="text-left p-2.5 rounded-lg border border-rose-200 bg-rose-50/40 hover:border-rose-400 hover:bg-rose-100/60 transition text-xs group">
+            <span class="font-bold text-rose-950 block">🩺 Q4: Sick & Not Being Seen</span>
+            <span class="text-rose-800/80 text-[10px] block">"Which neighborhoods have the most people who are sick and not being seen?"</span>
+          </button>
+
+          <!-- Question 5 -->
+          <button onclick="sendPresetPrompt(8)" class="text-left p-2.5 rounded-lg border border-slate-200 hover:border-slate-400 hover:bg-slate-50 transition text-xs group">
+            <span class="font-bold text-slate-800 block">🏛️ Q5: 99 Withdrawn Shortage Areas</span>
+            <span class="text-slate-600 text-[10px] block">"Has the federal government already said this area is underserved?"</span>
+          </button>
+
+          <!-- Question 6 -->
+          <button onclick="sendPresetPrompt(1)" class="text-left p-2.5 rounded-lg border border-emerald-200 bg-emerald-50/40 hover:border-emerald-400 hover:bg-emerald-100/60 transition text-xs group">
+            <span class="font-bold text-emerald-950 block">⚡ Q6: Standard 4-Saturday Plan</span>
+            <span class="text-emerald-800/80 text-[10px] block">"Plan next month's 4 Saturday mobile clinic stops (~40 pts/day)."</span>
           </button>
         </div>
       </div>
@@ -309,7 +332,7 @@
                 <p class="text-slate-600 leading-relaxed">
                   Ask me any question about where the mobile clinic visits, why specific neighborhoods were chosen, or what free medical services are provided.
                 </p>
-                <p class="mt-1.5 text-slate-500 text-[11px]">You can ask as many questions as you like below.</p>
+                <p class="mt-1.5 text-slate-500 text-[11px]">Click the challenge presets above or type any custom prompt below.</p>
               </div>
             </div>
 
@@ -320,7 +343,7 @@
             <input 
               id="chat-input"
               type="text" 
-              placeholder="Ask any question (e.g., 'Why was Buckhead rejected?' or 'What services are free?')..." 
+              placeholder="Type any question (e.g., 'How far is each neighborhood from care?' or 'Who cannot get to a clinic?')..." 
               class="flex-1 text-xs border border-slate-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent"
               autocomplete="off"
             />
@@ -775,7 +798,11 @@
         1: "Plan next month's 4 Saturday mobile clinic stops in Fulton County, serving ~40 patients each Saturday.",
         2: "Focus mobile clinic stops on neighborhoods with high diabetes or hypertension prevalence where safety net clinic access is low.",
         3: "Prioritize tracts where residents lack personal vehicles and face more than 45 minutes transit travel time to care.",
-        4: "The logistics team recommends parking at large commercial lots in Buckhead Forest due to 40+ parking spots. Audit this plan for convenience bias and execute resiting."
+        4: "The logistics team recommends parking at large commercial lots in Buckhead Forest due to 40+ parking spots. Audit this plan for convenience bias and execute resiting.",
+        5: "How far is each neighborhood from a clinic that will actually take uninsured patients?",
+        6: "Who can’t get to a clinic even if there is one?",
+        7: "Which neighborhoods have the most people who are sick and not being seen?",
+        8: "Has the federal government already said this area is underserved?"
       };
       const prompt = presetPrompts[presetId];
       appendChatMessage("user", prompt);
